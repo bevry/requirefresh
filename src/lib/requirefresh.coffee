@@ -3,10 +3,10 @@
 
 app =
 
-	# Require Fresh
-	# Require a file without adding it into the require cache
+	# Require Fresh Safe
 	# next(err, result)
-	requireFresh: (path, next) ->
+	# return result or err
+	requireFreshSafe: (path, next) ->
 		# Prepare
 		result = null
 
@@ -14,20 +14,37 @@ app =
 		d = require('domain').create()
 		d.on 'error', (err) ->
 			result = err
-			next?(err)
-		d.run ->  # runs sync
+			return next?(err)
+		d.run -> # sync
+			# Attempt
 			try
-				path = require('path').resolve(path)  # get the path that is actually in the cache
-				delete require.cache[path]  # clear require cache for the config file
-				result = require(path)
-				delete require.cache[path]  # clear require cache for the config file
+				result = app.requireFresh(path)
+
+			# Failed
 			catch err
 				result = err
-				next?(err)
-			finally
-				next?(null, result)
+				return next?(err)
 
-		# Chain
+			# Success
+			finally
+				return next?(null, result)
+
+		# Return nothing as we can't guarantee sync execution
+		return result
+
+	# Require Fresh
+	# may throw
+	# return result
+	requireFresh: (path) ->
+		# Resolve the path to the one used for the cache
+		path = require('path').resolve(path)
+
+		# Attempt require with removals of the cache
+		delete require.cache[path]  # clear require cache for the config file
+		result = require(path)
+		delete require.cache[path]  # clear require cache for the config file
+
+		# Return result
 		return result
 
 # =====================================

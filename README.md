@@ -20,7 +20,13 @@ Require a file without adding it into the require cache
 ## Usage
 
 ``` javascript
-var theLoadedModule = require('requirefresh').requireFresh('my-module-path')
+// Via call and return with no error handling
+var result = require('requirefresh').requireFresh('my-module-path')
+
+// Via callback uses domains for errors (with try/catch for node 0.8 support)
+var resultOrError = require('requireFresh').requireFreshSafe('my-module-path', function(err,result){
+	
+});
 ```
 
 
