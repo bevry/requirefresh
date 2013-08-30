@@ -1,5 +1,8 @@
 ## History
 
+- v1.1.1 August 30, 2011
+	- Re-applied engines to be node 0.8 and above due to use of domains
+
 - v1.1.0 August 30, 2011
 	- Split out into `requireFresh` and `requireFreshSafe`
 
