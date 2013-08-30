@@ -1,5 +1,8 @@
 ## History
 
+- v1.1.2 August 30, 2011
+	- Learnt how to use finally in try catch finally (it runs even after returns!)
+
 - v1.1.1 August 30, 2011
 	- Re-applied engines to be node 0.8 and above due to use of domains
 

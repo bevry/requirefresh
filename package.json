@@ -1,6 +1,6 @@
 {
 	"name": "requirefresh",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "Require a file without adding it into the require cache",
 	"homepage": "https://github.com/bevry/requirefresh",
 	"keywords": [

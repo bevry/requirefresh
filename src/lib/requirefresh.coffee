@@ -26,8 +26,7 @@ app =
 				return next?(err)
 
 			# Success
-			finally
-				return next?(null, result)
+			return next?(null, result)
 
 		# Return nothing as we can't guarantee sync execution
 		return result
