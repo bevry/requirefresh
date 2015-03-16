@@ -1,17 +1,27 @@
-lib-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+# March 15, 2015
+# https://github.com/bevry/base
 
-pids
-logs
-results
+# Temp Files
+**/*.log
+**/.docpad.db
 
-node_modules
-npm-debug.log
-
+# Build Files
+build/
+components/
+bower_components/
+node_modules/
 out/
+
+# Editor Caches
+.c9/
+
+# Private Files
+.env
+.idea
+.cake_task_cache
+
+
+# =====================================
+# CUSTOM MODIFICATIONS
+
+# None
