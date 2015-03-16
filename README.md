@@ -43,13 +43,22 @@ Require a file without adding it into the require cache
 ## Usage
 
 ``` javascript
-// Via call and return with no error handling
-var result = require('requirefresh').requireFresh('my-module-path')
+// Import
+var requireFresh = require('requirefresh')
 
-// Via callback uses domains for errors (with try/catch for node 0.8 support)
-var resultOrError = require('requireFresh').requireFreshSafe('my-module-path', function(err,result){
+// Require the module freshly synchronously (will throw errors)
+try {
+	var result = requireFresh('my-module-path')
+} catch (error) {}
 
-});
+// Require the fresh module synchronously (will callback with error and result)
+requireFresh.safe('my-module-path', function(error,result){
+	if (error) {
+		// error
+	} else {
+		// success
+	}
+})
 ```
 
 <!-- HISTORY/ -->
@@ -112,7 +121,7 @@ Unless stated otherwise all works are:
 
 and licensed under:
 
-- The #{type} License
+- The incredibly [permissive](http://en.wikipedia.org/wiki/Permissive_free_software_licence) [MIT License](http://opensource.org/licenses/mit-license.php)
 
 <!-- /LICENSE -->
 

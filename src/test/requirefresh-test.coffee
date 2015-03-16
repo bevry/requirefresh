@@ -1,19 +1,32 @@
 # Import
 {expect, assert} = require('chai')
 joe = require('joe')
-{requireFresh, requireFreshSafe} = require('../../')
+requireFresh = require('../../')
 
 # =====================================
 # Tests
 
-joe.describe 'requirefresh', (describe,it) ->
+packagePath = __dirname+'/../../package.json'
+emptyPath = __dirname+'/../../asdasd.json'
 
-	it 'should fetch something', ->
-		result = requireFresh(__dirname+'/../../package.json')
+joe.suite 'require fresh', (suite,test) ->
+
+	test 'standard', ->
+		result = requireFresh(packagePath)
 		assert.ok(result)
 		assert.ok(result?.version)
 
-	it 'should fetch something', ->
-		result = requireFreshSafe(__dirname+'/../../package.json')
-		assert.ok(result)
-		assert.ok(result?.version)
+	test 'safe', ->
+		requireFresh.safe packagePath, (err, result) ->
+			assert.ok(result)
+			assert.ok(result?.version)
+
+	test 'standard fail', ->
+		try
+			result = requireFresh(emptyPath)
+		catch err
+			assert.ok(err)
+
+	test 'safe fail', ->
+		requireFresh.safe emptyPath, (err, result) ->
+			assert.ok(err)

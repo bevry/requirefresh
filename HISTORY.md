@@ -1,5 +1,11 @@
 # History
 
+## v2.0.0 March 16, 2015
+- Simplified the API
+	- `require('requirefresh').requireFresh('the-module')` is now `require('requirefresh')('the-module')`
+	- `require('requirefresh').requireFreshSafe('the-module', next)` is now `require('requirefresh').safe('the-module', next)`
+- Removed domains from safe method, seemed out of scope to have them there (there is now just a try..catch)
+
 ## v1.1.2 August 30, 2011
 - Learnt how to use finally in try catch finally (it runs even after returns!)
 
