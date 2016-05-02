@@ -1,32 +1,45 @@
-# Import
-{expect, assert} = require('chai')
-joe = require('joe')
-requireFresh = require('../../')
+// Import
+const {ok} = require('assert')
+const {join} = require('path')
+const joe = require('joe')
+const requireFresh = require('../')
 
-# =====================================
-# Tests
+// Paths
+const packagePath = join(__dirname, '..', 'package.json')
+const emptyPath = join(__dirname, '..', 'asdasd.json')
 
-packagePath = __dirname+'/../../package.json'
-emptyPath = __dirname+'/../../asdasd.json'
+// Tests
+joe.suite('require fresh', function (suite, test) {
 
-joe.suite 'require fresh', (suite,test) ->
+	test('standard', function () {
+		const result = requireFresh(packagePath)
+		ok(result)
+		ok(result && result.version)  // ensure this actually the package.json data
+	})
 
-	test 'standard', ->
-		result = requireFresh(packagePath)
-		assert.ok(result)
-		assert.ok(result?.version)
+	test('safe', function () {
+		requireFresh.safe(packagePath, function (err, result) {
+			ok(!err, "error doesn't exist")
+			ok(result)
+			ok(result && result.version)
+		})
+	})
 
-	test 'safe', ->
-		requireFresh.safe packagePath, (err, result) ->
-			assert.ok(result)
-			assert.ok(result?.version)
+	test('standard fail', function () {
+		let error = null
+		try {
+			requireFresh(emptyPath)
+		}
+		catch ( err ) {
+			error = err
+		}
+		ok(error, 'error exists for failed require')
+	})
 
-	test 'standard fail', ->
-		try
-			result = requireFresh(emptyPath)
-		catch err
-			assert.ok(err)
-
-	test 'safe fail', ->
-		requireFresh.safe emptyPath, (err, result) ->
-			assert.ok(err)
+	test('safe fail', function () {
+		requireFresh.safe(emptyPath, function (err, result) {
+			ok(err)
+			ok(typeof result === 'undefined', 'result is undefined')
+		})
+	})
+})
