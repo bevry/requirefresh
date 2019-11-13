@@ -4,7 +4,7 @@
 const { ok } = require('assert')
 const { join } = require('path')
 const kava = require('kava')
-const requireFresh = require('../')
+const requireFresh = require('./')
 
 // Paths
 const packagePath = join(__dirname, '..', 'package.json')
