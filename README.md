@@ -33,6 +33,29 @@ Require a file without adding it into the require cache
 <!-- /DESCRIPTION -->
 
 
+## Usage
+
+[Complete API Documentation.](http://master.requirefresh.bevry.surge.sh/docs/index.html)
+
+```javascript
+// Import
+var requireFresh = require('requirefresh')
+
+// Require the module freshly synchronously (will throw errors)
+try {
+    var result = requireFresh('my-module-path')
+} catch (error) {}
+
+// Require the fresh module synchronously (will callback with error and result)
+requireFresh.safe('my-module-path', function (error, result) {
+    if (error) {
+        // error
+    } else {
+        // success
+    }
+})
+```
+
 <!-- INSTALL/ -->
 
 <h2>Install</h2>
@@ -40,7 +63,8 @@ Require a file without adding it into the require cache
 <a href="https://npmjs.com" title="npm is a package manager for javascript"><h3>npm</h3></a>
 <ul>
 <li>Install: <code>npm install --save requirefresh</code></li>
-<li>Require: <code>require('requirefresh')</code></li>
+<li>Import: <code>import * as pkg from ('requirefresh')</code></li>
+<li>Require: <code>const pkg = require('requirefresh')</code></li>
 </ul>
 
 <h3><a href="https://editions.bevry.me" title="Editions are the best way to produce and consume packages you care about.">Editions</a></h3>
@@ -48,9 +72,7 @@ Require a file without adding it into the require cache
 <p>This package is published with the following editions:</p>
 
 <ul><li><code>requirefresh</code> aliases <code>requirefresh/source/index.js</code></li>
-<li><code>requirefresh/source/index.js</code> is esnext source code with require for modules</li></ul>
-
-<p>Environments older than Node.js v8 may need <a href="https://babeljs.io/docs/usage/polyfill/" title="A polyfill that emulates missing ECMAScript environment features">Babel's Polyfill</a> or something similar.</p>
+<li><code>requirefresh/source/index.js</code> is <a href="https://en.wikipedia.org/wiki/ECMAScript#ES.Next" title="ECMAScript Next">ESNext</a> source code for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li></ul>
 
 <h3><a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a></h3>
 
@@ -66,29 +88,6 @@ This project provides its type information via inline <a href="http://usejsdoc.o
 
 <!-- /INSTALL -->
 
-
-## Usage
-
-[API Documentation.](http://master.requirefresh.bevry.surge.sh/docs/)
-
-```javascript
-// Import
-var requireFresh = require('requirefresh')
-
-// Require the module freshly synchronously (will throw errors)
-try {
-    var result = requireFresh('my-module-path')
-} catch (error) {}
-
-// Require the fresh module synchronously (will callback with error and result)
-requireFresh.safe('my-module-path', function(error, result) {
-    if (error) {
-        // error
-    } else {
-        // success
-    }
-})
-```
 
 <!-- HISTORY/ -->
 
@@ -116,7 +115,7 @@ requireFresh.safe('my-module-path', function(error, result) {
 
 These amazing people are maintaining this project:
 
-<ul><li><a href="http://balupton.com">Benjamin Lupton</a> — <a href="https://github.com/bevry/requirefresh/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/requirefresh">view contributions</a></li></ul>
+<ul><li><a href="https://balupton.com">Benjamin Lupton</a> — <a href="https://github.com/bevry/requirefresh/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/requirefresh">view contributions</a></li></ul>
 
 <h3>Sponsors</h3>
 
@@ -136,9 +135,8 @@ No sponsors yet! Will you be the first?
 
 These amazing people have contributed code to this project:
 
-<ul><li><a href="http://balupton.com">Benjamin Lupton</a> — <a href="https://github.com/bevry/requirefresh/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/requirefresh">view contributions</a></li>
-<li><a href="http://seanfridman.com">Sean Fridman</a> — <a href="https://github.com/bevry/requirefresh/commits?author=sfrdmn" title="View the GitHub contributions of Sean Fridman on repository bevry/requirefresh">view contributions</a></li>
-<li><a href="http://github.com/apps/dependabot-preview">dependabot-preview[bot]</a> — <a href="https://github.com/bevry/requirefresh/commits?author=dependabot-preview[bot]" title="View the GitHub contributions of dependabot-preview[bot] on repository bevry/requirefresh">view contributions</a></li></ul>
+<ul><li><a href="https://balupton.com">Benjamin Lupton</a> — <a href="https://github.com/bevry/requirefresh/commits?author=balupton" title="View the GitHub contributions of Benjamin Lupton on repository bevry/requirefresh">view contributions</a></li>
+<li><a href="https://github.com/sfrdmn">Sean Fridman</a> — <a href="https://github.com/bevry/requirefresh/commits?author=sfrdmn" title="View the GitHub contributions of Sean Fridman on repository bevry/requirefresh">view contributions</a></li></ul>
 
 <a href="https://github.com/bevry/requirefresh/blob/master/CONTRIBUTING.md#files">Discover how you can contribute by heading on over to the <code>CONTRIBUTING.md</code> file.</a>
 
@@ -152,7 +150,7 @@ These amazing people have contributed code to this project:
 Unless stated otherwise all works are:
 
 <ul><li>Copyright &copy; 2013+ <a href="http://bevry.me">Bevry Pty Ltd</a></li>
-<li>Copyright &copy; 2011+ <a href="http://balupton.com">Benjamin Lupton</a></li></ul>
+<li>Copyright &copy; 2011+ <a href="https://balupton.com">Benjamin Lupton</a></li></ul>
 
 and licensed under:
 
