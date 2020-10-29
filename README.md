@@ -35,25 +35,39 @@ Require a file without adding it into the require cache
 
 ## Usage
 
-[Complete API Documentation.](http://master.requirefresh.bevry.surge.sh/docs/index.html)
+[Complete API Documentation.](http://master.requirefresh.bevry.surge.sh/docs/globals.html)
+
+Here is an example that uses Require Fresh to load the `package.json` file without caching.
 
 ```javascript
 // Import
-var requireFresh = require('requirefresh')
+const {
+    requireFresh,
+    requireFreshCallback,
+    requireFreshPromise,
+} = require('requirefresh')
 
 // Require the module freshly synchronously (will throw errors)
 try {
-    var result = requireFresh('my-module-path')
-} catch (error) {}
+    const result = requireFresh('./package.json')
+    console.log(result)
+} catch (error) {
+    console.error(error)
+}
 
-// Require the fresh module synchronously (will callback with error and result)
-requireFresh.safe('my-module-path', function (error, result) {
+// Require the fresh module synchronously via a callback that contains the error and result
+requireFreshCallback('./package.json', function (error, result) {
     if (error) {
-        // error
+        console.error(error)
     } else {
-        // success
+        console.log(result)
     }
 })
+
+// Require the fresh module synchronously via a promise
+requireFreshPromise('./package.json')
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error))
 ```
 
 <!-- INSTALL/ -->
@@ -63,28 +77,17 @@ requireFresh.safe('my-module-path', function (error, result) {
 <a href="https://npmjs.com" title="npm is a package manager for javascript"><h3>npm</h3></a>
 <ul>
 <li>Install: <code>npm install --save requirefresh</code></li>
-<li>Import: <code>import * as pkg from ('requirefresh')</code></li>
-<li>Require: <code>const pkg = require('requirefresh')</code></li>
+<li>Import: <code>import pkg from ('requirefresh')</code></li>
+<li>Require: <code>const pkg = require('requirefresh').default</code></li>
 </ul>
 
 <h3><a href="https://editions.bevry.me" title="Editions are the best way to produce and consume packages you care about.">Editions</a></h3>
 
 <p>This package is published with the following editions:</p>
 
-<ul><li><code>requirefresh</code> aliases <code>requirefresh/source/index.js</code></li>
-<li><code>requirefresh/source/index.js</code> is <a href="https://en.wikipedia.org/wiki/ECMAScript#ES.Next" title="ECMAScript Next">ESNext</a> source code for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 10 || 12 || 13 || 14 with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li></ul>
-
-<h3><a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a></h3>
-
-This project provides its type information via inline <a href="http://usejsdoc.org" title="JSDoc is an API documentation generator for JavaScript, similar to Javadoc or phpDocumentor">JSDoc Comments</a>. To make use of this in <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a>, set your <code>maxNodeModuleJsDepth</code> compiler option to `5` or thereabouts. You can accomlish this via your `tsconfig.json` file like so:
-
-``` json
-{
-  "compilerOptions": {
-    "maxNodeModuleJsDepth": 5
-  }
-}
-```
+<ul><li><code>requirefresh/source/index.ts</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> source code with <a href="https://babeljs.io/docs/learn-es2015/#modules" title="ECMAScript Modules">Import</a> for modules</li>
+<li><code>requirefresh</code> aliases <code>requirefresh/edition-esnext/index.js</code></li>
+<li><code>requirefresh/edition-esnext/index.js</code> is <a href="https://www.typescriptlang.org/" title="TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. ">TypeScript</a> compiled against <a href="https://en.wikipedia.org/wiki/ECMAScript#ES.Next" title="ECMAScript Next">ESNext</a> for <a href="https://nodejs.org" title="Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine">Node.js</a> 4 || 6 || 8 || 10 || 12 || 14 || 15 with <a href="https://nodejs.org/dist/latest-v5.x/docs/api/modules.html" title="Node/CJS Modules">Require</a> for modules</li></ul>
 
 <!-- /INSTALL -->
 

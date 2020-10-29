@@ -2,10 +2,13 @@ version: ~> 1.0
 sudo: false
 language: node_js
 node_js:
+  - '4'
+  - '6'
+  - '8'
   - '10'
   - '12'
-  - '13'
   - '14'
+  - '15'
 matrix:
   fast_finish: true
   allow_failures: []
@@ -28,4 +31,4 @@ after_success:
 notifications:
   email:
     recipients: >-
-      WC9OUfRM15ieCs1B/DElhXp67AMgNbPgXkmkU9KUCC750hYNNlECPBr/fnqZtzZ9Xr2ypHMJzpmut2x1D/pX4OvlHmb0wgfs1UC9v4pUORUwbqzGSVBQD46vJ3BgiBgSLa3snPXe1JjhU5vlF2pJf3sg7gPOj0Eq72A/cb5Gwig=
+      EmdGjIipuDdF8Pi+Q3z37zCHuav/QtT8RGqRJ005dBDUexN1PCt9tByIEG7vbl1EUhpi2wUPjDDL2yzuBot5IaQLHX3VoHUZ1+24bEDx4akPCgi/fjVtjBotDlJjngTXP+nutHRn0NY/eUiyehudugH1Rj0YHqs5ojlGmZi6sqQ=

@@ -1,5 +1,18 @@
 # History
 
+## v5.0.0 2019 November 18
+
+-   Converted from JavaScript to TypeScript
+-   `const requireFresh = require('requirefresh')` must be changed to one of these:
+    -   `const requireFresh = require('requirefresh').default`
+    -   `const { requireFresh } = require('requirefresh')`
+    -   `import requireFresh from 'requirefresh'`
+    -   `import { requireFresh } from 'requirefresh'`
+-   `requireFreshSafe` is now an alias for `requireFreshCallback`
+-   Introduced `requireFreshPromise`
+-   Node.js engines support is now back to `>=4`, bringing back previous `requirefresh` v2 coverage
+-   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
+
 ## v4.13.0 2020 September 5
 
 -   Updated dependencies, [base files](https://github.com/bevry/base), and [editions](https://editions.bevry.me) using [boundation](https://github.com/bevry/boundation)
