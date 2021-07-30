@@ -35,7 +35,7 @@ Require a file without adding it into the require cache
 
 ## Usage
 
-[Complete API Documentation.](http://master.requirefresh.bevry.surge.sh/docs/globals.html)
+[Complete API Documentation.](http://master.requirefresh.bevry.surge.sh/docs/)
 
 Here is an example that uses Require Fresh to load the `package.json` file without caching.
 
