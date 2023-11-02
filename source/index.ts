@@ -40,7 +40,7 @@ export function requireFreshCallback(path: string, next: Errback) {
 	let result, error
 	try {
 		result = requireFresh(path)
-	} catch (err) {
+	} catch (err: any) {
 		error = err
 	}
 	next(error, result)
